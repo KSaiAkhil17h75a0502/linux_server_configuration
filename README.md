@@ -1,7 +1,7 @@
 # linux_server_configuration
 This project about create a linux server and using it to host our web application
 
-# ip address
+# IP Address
 IP Address: 13.126.63.101
 
 # Host Name
