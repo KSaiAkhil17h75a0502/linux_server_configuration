@@ -169,34 +169,36 @@ and add the following thing into this file
         from catalog import app as application
         application.secret_key = 'supersecretkey'
 6. Rename the **Project.py** to **__init.py__**
+        
+        47. sudo mv project.py __init__.py
 7. Now we need to install and start the **virtual machine**
         
-        47. sudo pip install virtualenv
-        48. sudo virtualenv venv
-        49. source venv/bin/activate
-        50. sudo chmod -R 777 venv
+        48. sudo pip install virtualenv
+        49. sudo virtualenv venv
+        50. source venv/bin/activate
+        51. sudo chmod -R 777 venv
 You should see a (venv) appears before your username in the command line.
 8. Now we need to install the Flask and other packages needed for this application
         
-        51. sudo apt-get install python-pip (If needed)
-        52. sudo pip install flask
-        53. sudo pip install httplib2
-        54. sudo pip install oauth2client
-        55. sudo pip install sqlalchemy
-        56. sudo pip install psycopg2 (sometimes it asks to install psycopg2-binary. You'll find this while executing your program)
-        57. sudo pip install requests
-        58. sudo pip install redirect
-        59. sudo pip install psslib
+        52. sudo apt-get install python-pip (If needed)
+        53. sudo pip install flask
+        54. sudo pip install httplib2
+        55. sudo pip install oauth2client
+        56. sudo pip install sqlalchemy
+        57. sudo pip install psycopg2 (sometimes it asks to install psycopg2-binary. You'll find this while executing your program)
+        58. sudo pip install requests
+        59. sudo pip install redirect
+        60. sudo pip install psslib
 9. Use the below command to change the **client_secrets.json** line to **/var/www/catalog/catalog/client_secrets.json**
         
-        60. sudo nano __init__.py
+        61. sudo nano __init__.py
 and change the host to your Amazon Lightsail public IP address and port to 80 and change the last line of your program to this
         
         before app.run(host='0.0.0.0', port=5000)
         after  app.run()
 10. Now we need to configure and enable the virtual host
         
-        61. sudo nano /etc/apache2/sites-available/catalog.conf
+        62. sudo nano /etc/apache2/sites-available/catalog.conf
 paste the following code and save
          
         <VirtualHost *:80>
@@ -222,36 +224,47 @@ paste the following code and save
 You can find the host name in this link: http://www.hcidata.info/host2ip.cgi
 11. Now we need to setup the database
         
-        62. sudo apt-get install libpq-dev python-dev
-        63. sudo apt-get install postgresql postgresql-contrib
-        64. sudo su - postgres
+        63. sudo apt-get install libpq-dev python-dev
+        64. sudo apt-get install postgresql postgresql-contrib
+        65. sudo su - postgres
 You should see the username changed again in command line, and type
         
-        65. psql
+        66. psql
 to get into postgres command line
 12. Now we create a user to create and set up the database. I name my database **catalog** with user **catalog**
         
-        66. CREATE USER catalog WITH PASSWORD [your password];
-        67. ALTER USER catalog CREATEDB;
-        68. CREATE DATABASE catalog WITH OWNER catalog;
-        69. (Connect to database) \c catalog
-        70. REVOKE ALL ON SCHEMA public FROM public;
-        71. GRANT ALL ON SCHEMA public TO catalog;
-        72. Quit the postgrel command line: (\q) and then (exit)
+        67. CREATE USER catalog WITH PASSWORD [your password];
+        68. ALTER USER catalog CREATEDB;
+        69. CREATE DATABASE catalog WITH OWNER catalog;
+        70. (Connect to database) \c catalog
+        71. REVOKE ALL ON SCHEMA public FROM public;
+        72. GRANT ALL ON SCHEMA public TO catalog;
+        73. Quit the postgrel command line: (\q) and then (exit)
 13. use 
         
-        73. sudo nano __init__.py
+        74. sudo nano __init__.py
 command to change all engine to **engine = create_engine('postgresql://catalog:[your password]@localhost/catalog**
 change you engine in **database_setup.py** also.
 14. Run the **database_setup.py** and **__init__.py** by using
         
-        74. python database_setup.py
-        75. python __init__.py
+        75. python database_setup.py
+        76. python __init__.py
 15. Restart the **Apache Server** by using below command
         
-        76. sudo service apache2 restart
+        77. sudo service apache2 restart
 and enter your public IP address or host name into the browser. Your application should be online now!
 
+# To Enable and Disable default Apache2
+After executing your programs it may give default apache page in website. To solve that issues follow below instructions
+        
+        78. (Disable) sudo a2dissite 000-default.conf
+        79. (Enable) sudo a2ensite catalog
+After performing both enable and disable operations you have to restart apache2
+        
+        80. sudo service ssh reload (Only after disabling the apache2)
+        81. sudo service apache2 reload
+        82. sudo service apache2 restart
+After executing above command re-execute your **database_setup.py** and **__init__.py** files and enter your IP address in your website.        
 # Reference
 My sincere thanks to the people who poster their step-by-step on their Github:
 https://github.com/chuanqin3/udacity-linux-configuration
