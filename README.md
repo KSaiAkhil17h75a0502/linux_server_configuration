@@ -53,7 +53,7 @@ then save it.(*Control X, then type Y, then hit enter key on your keyboard*)
         7. sudo apt-get update
         8. sudo apt-get upgrade
         9. sudo apt-get install finger
-8. Open a new terminal (**Windows + r***) and give following command
+8. Open a new terminal (**Windows + r**) and give following command
         
         10. ssh-keygen -f ~/.ssh/udacity_key.rsa
 9. Stay on the same terminal window and give the following command to read the public key. Copy that public key
