@@ -221,7 +221,8 @@ paste the following code and save
             LogLevel warn
             CustomLog ${APACHE_LOG_DIR}/access.log combined
         </VirtualHost>
-        You can find the host name in this link: http://www.hcidata.info/host2ip.cgi
+You can find the host name in this link: http://www.hcidata.info/host2ip.cgi
+
 11. Now we need to setup the database
         
         63. sudo apt-get install libpq-dev python-dev
