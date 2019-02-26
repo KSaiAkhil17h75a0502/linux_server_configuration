@@ -221,6 +221,7 @@ paste the following code and save
             LogLevel warn
             CustomLog ${APACHE_LOG_DIR}/access.log combined
         </VirtualHost>
+        You can find the host name in this link: http://www.hcidata.info/host2ip.cgi
 11. Now we need to setup the database
         
         63. sudo apt-get install libpq-dev python-dev
@@ -229,7 +230,8 @@ paste the following code and save
 You should see the username changed again in command line, and type
         
         66. psql
-to get into postgres command line
+to get into postgres command line.
+
 12. Now we create a user to create and set up the database. I name my database **catalog** with user **catalog**
         
         67. CREATE USER catalog WITH PASSWORD [your password];
@@ -244,6 +246,7 @@ to get into postgres command line
         74. sudo nano __init__.py
 command to change all engine to **engine = create_engine('postgresql://catalog:[your password]@localhost/catalog**
 change you engine in **database_setup.py** also.
+
 14. Run the **database_setup.py** and **__init__.py** by using
         
         75. python database_setup.py
