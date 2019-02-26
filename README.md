@@ -34,7 +34,7 @@ Host Name: ec2-13-126-63-101.ap-south-1.compute.amazonaws.com
         2. sudo chmod 600 ~/.ssh/YOURFILENAME.pem
 4. Now we use this key to log into our Amazon Lightsail server
         
-        3. ssh -i ~/.ssh/YOURFILENAME.pem ubuntu@13.126.63.101
+        3. sudo ssh -i ~/.ssh/YOURFILENAME.pem ubuntu@13.126.63.101
 5. Amazon Lightsail does not allow you to log in as a root user, but we can switch to become a root user. By executing the following command we can become root user
         
         4. sudo su -
