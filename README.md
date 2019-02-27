@@ -158,6 +158,7 @@ You should input the public IP address and you should see a page which shown as 
         
         45. git clone [your project link] catalog
 Copy your link from your **Github Profile**, it'll be easy.
+
 5. Create a **.wsgi** file
         
         46. sudo nano catalog.wsgi
