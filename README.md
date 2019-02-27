@@ -48,6 +48,7 @@ and fill that with
         
         grader ALL = (ALL:ALL) ALL
 then save it.(*Control X, then type Y, then hit enter key on your keyboard*)
+
 7. Run the following commands to update all packages and install package:
         
         7. sudo apt-get update
@@ -146,6 +147,7 @@ and start the web server by
                       or
         40. sudo service apache2 restart
 You should input the public IP address and you should see a page which shown as **Apache2 Ubuntu Default Page**. If you do not see the page, you have to check the error message and google a solution.
+
 3. Set up the folder structure
         
         41. cd /var/www
